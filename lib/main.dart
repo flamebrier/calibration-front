@@ -1,39 +1,32 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'generated/l10n.dart';
 
 import 'styles.dart';
 
 void main() {
   runApp(Calibration());
+  S.load(Locale(Intl.getCurrentLocale()));
 }
 
 class Calibration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    log(S.delegate.supportedLocales.toString());
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: <LocalizationsDelegate>[
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      /* localeResolutionCallback:
-          (Locale locale, Iterable<Locale> supportedLocales) {
-        if (locale == null) {
-          return supportedLocales.first;
-        }
-        for (final Locale supportedLocale in supportedLocales) {
-          if (locale.countryCode == supportedLocale.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      }, */
-      title: S.of(context).title,
+      title: S.current?.title ?? "",
       theme: Styles.mainTheme,
-      home: HomePage(title: S.of(context).title),
+      home: HomePage(title: S.current?.title ?? ""),
     );
   }
 }
