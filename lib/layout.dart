@@ -1,5 +1,5 @@
 import 'package:calibration/pages/history/history.dart';
-import 'package:calibration/pages/profile.dart';
+import 'package:calibration/pages/profile/profile.dart';
 import 'package:calibration/styles.dart';
 import 'package:flutter/material.dart';
 
