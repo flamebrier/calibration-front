@@ -32,6 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "historyTitle" : MessageLookupByLibrary.simpleMessage("History"),
     "launchChooseLeft" : MessageLookupByLibrary.simpleMessage("Left to choose"),
     "launchTimeLeft" : MessageLookupByLibrary.simpleMessage("Time left"),
+    "matches0" : MessageLookupByLibrary.simpleMessage("matches"),
+    "matches1" : MessageLookupByLibrary.simpleMessage("match"),
+    "matches2" : MessageLookupByLibrary.simpleMessage("matches"),
+    "matches3" : MessageLookupByLibrary.simpleMessage("matches"),
+    "matches5" : MessageLookupByLibrary.simpleMessage("matches"),
     "minutes0" : MessageLookupByLibrary.simpleMessage("minutes"),
     "minutes1" : MessageLookupByLibrary.simpleMessage("minute"),
     "minutes2" : MessageLookupByLibrary.simpleMessage("minutes"),
@@ -51,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Maximum people playing"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Maximum game time"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Start"),
+    "statsTitle" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "title" : MessageLookupByLibrary.simpleMessage("Calibration")
   };
 }

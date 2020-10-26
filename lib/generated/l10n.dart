@@ -245,6 +245,16 @@ class S {
     );
   }
 
+  /// `Statistics`
+  String get statsTitle {
+    return Intl.message(
+      'Statistics',
+      name: 'statsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `minutes`
   String get minutes0 {
     return Intl.message(
@@ -340,6 +350,56 @@ class S {
     return Intl.message(
       'people in game',
       name: 'peopleIn5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `matches`
+  String get matches0 {
+    return Intl.message(
+      'matches',
+      name: 'matches0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `match`
+  String get matches1 {
+    return Intl.message(
+      'match',
+      name: 'matches1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `matches`
+  String get matches2 {
+    return Intl.message(
+      'matches',
+      name: 'matches2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `matches`
+  String get matches3 {
+    return Intl.message(
+      'matches',
+      name: 'matches3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `matches`
+  String get matches5 {
+    return Intl.message(
+      'matches',
+      name: 'matches5',
       desc: '',
       args: [],
     );

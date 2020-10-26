@@ -32,6 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "historyTitle" : MessageLookupByLibrary.simpleMessage("История"),
     "launchChooseLeft" : MessageLookupByLibrary.simpleMessage("Ещё выбрать"),
     "launchTimeLeft" : MessageLookupByLibrary.simpleMessage("Осталось"),
+    "matches0" : MessageLookupByLibrary.simpleMessage("совпадений"),
+    "matches1" : MessageLookupByLibrary.simpleMessage("совпадение"),
+    "matches2" : MessageLookupByLibrary.simpleMessage("совпадения"),
+    "matches3" : MessageLookupByLibrary.simpleMessage("совпадения"),
+    "matches5" : MessageLookupByLibrary.simpleMessage("совпадений"),
     "minutes0" : MessageLookupByLibrary.simpleMessage("минут"),
     "minutes1" : MessageLookupByLibrary.simpleMessage("минута"),
     "minutes2" : MessageLookupByLibrary.simpleMessage("минуты"),
@@ -51,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Максимальное количество игроков"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Максимальное время игры"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Старт"),
+    "statsTitle" : MessageLookupByLibrary.simpleMessage("Статистика"),
     "title" : MessageLookupByLibrary.simpleMessage("Калибровка")
   };
 }

@@ -26,6 +26,8 @@
 
     "historyTitle": "History",
 
+    "statsTitle": "Statistics",
+
     "minutes0": "minutes",
     "minutes1": "minute",
     "minutes2": "minutes",
@@ -36,5 +38,11 @@
     "peopleIn1": "solo game",
     "peopleIn2": "duo game",
     "peopleIn3": "people in game",
-    "peopleIn5": "people in game"
+    "peopleIn5": "people in game",
+
+    "matches0": "matches",
+    "matches1": "match",
+    "matches2": "matches",
+    "matches3": "matches",
+    "matches5": "matches"
 }
