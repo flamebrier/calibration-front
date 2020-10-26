@@ -19,6 +19,9 @@
     "startGoodsCounter": "Сколько нужно выбрать товаров?",
     "startLinkInfo": "Ссылка для отправки",
 
+    "launchTimeLeft": "Осталось",
+    "launchChooseLeft": "Ещё выбрать",
+
     "profileTitle": "Профиль"
 
 
@@ -26,5 +29,11 @@
     "minutes1": "минута",
     "minutes2": "минуты",
     "minutes3": "минуты",
-    "minutes5": "минут"
+    "minutes5": "минут",
+
+    "peopleIn0": "человек играет",
+    "peopleIn1": "человек играет",
+    "peopleIn2": "человека играют",
+    "peopleIn3": "человека играют",
+    "peopleIn5": "человек играют",
 }

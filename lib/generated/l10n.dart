@@ -205,6 +205,26 @@ class S {
     );
   }
 
+  /// `Time left`
+  String get launchTimeLeft {
+    return Intl.message(
+      'Time left',
+      name: 'launchTimeLeft',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Left to choose`
+  String get launchChooseLeft {
+    return Intl.message(
+      'Left to choose',
+      name: 'launchChooseLeft',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profileTitle {
     return Intl.message(
@@ -260,6 +280,56 @@ class S {
     return Intl.message(
       'minutes',
       name: 'minutes5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `people in game`
+  String get peopleIn0 {
+    return Intl.message(
+      'people in game',
+      name: 'peopleIn0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `solo game`
+  String get peopleIn1 {
+    return Intl.message(
+      'solo game',
+      name: 'peopleIn1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `duo game`
+  String get peopleIn2 {
+    return Intl.message(
+      'duo game',
+      name: 'peopleIn2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `people in game`
+  String get peopleIn3 {
+    return Intl.message(
+      'people in game',
+      name: 'peopleIn3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `people in game`
+  String get peopleIn5 {
+    return Intl.message(
+      'people in game',
+      name: 'peopleIn5',
       desc: '',
       args: [],
     );

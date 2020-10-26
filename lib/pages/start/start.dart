@@ -1,5 +1,6 @@
 import 'package:calibration/pages/start/categories.dart';
 import 'package:calibration/pages/start/choose_start_settings.dart';
+import 'package:calibration/pages/start/game.dart';
 import 'package:calibration/pages/start/start_settings.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,8 @@ class _StartPageState extends State<StartPage>
         }
       },
       launch: (settings) {
-
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => GameView(settings: _settings)));
       },
     );
   }

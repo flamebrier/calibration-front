@@ -21,6 +21,9 @@
     "startGoodsCounter": "How much goods you'll choose?",
     "startLinkInfo": "Share link",
 
+    "launchTimeLeft": "Time left",
+    "launchChooseLeft": "Left to choose",
+
 
     "profileTitle": "Profile",
 
@@ -29,5 +32,11 @@
     "minutes1": "minute",
     "minutes2": "minutes",
     "minutes3": "minutes",
-    "minutes5": "minutes"
+    "minutes5": "minutes",
+
+    "peopleIn0": "people in game",
+    "peopleIn1": "solo game",
+    "peopleIn2": "duo game",
+    "peopleIn3": "people in game",
+    "peopleIn5": "people in game"
 }
