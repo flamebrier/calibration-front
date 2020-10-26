@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calibration/generated/l10n.dart';
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _HistoryPageState extends State<HistoryPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Center(
-      child: Text("История"),
+      child: Text(S.current.historyTitle),
     );
   }
 

@@ -9,7 +9,7 @@ import 'styles.dart';
 
 void main() {
   runApp(Calibration());
-  S.load(Locale(Intl.getCurrentLocale()));
+  S.load(Locale("ru_RU"/* Intl.getCurrentLocale() */));
 }
 
 class Calibration extends StatelessWidget {

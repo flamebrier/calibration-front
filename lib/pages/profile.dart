@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calibration/generated/l10n.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _ProfilePageState extends State<ProfilePage>
   Widget build(BuildContext context) {
     super.build(context);
     return Center(
-      child: Text("Профиль"),
+      child: Text(S.current.profileTitle),
     );
   }
 

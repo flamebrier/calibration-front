@@ -3,9 +3,7 @@
     "save": "Save",
     "share": "Share",
 
-
     "startTitle": "Start",
-
     "startCategorySuggestion": "Choose category",
     "catFemale": "Women",
     "catMale": "Men",
@@ -24,9 +22,9 @@
     "launchTimeLeft": "Time left",
     "launchChooseLeft": "Left to choose",
 
-
     "profileTitle": "Profile",
 
+    "historyTitle": "History",
 
     "minutes0": "minutes",
     "minutes1": "minute",

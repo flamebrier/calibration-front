@@ -4,6 +4,7 @@ import 'package:calibration/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/start/start.dart';
+import 'package:calibration/generated/l10n.dart';
 
 class LayoutView extends StatefulWidget {
   @override
@@ -22,13 +23,15 @@ class _LayoutViewState extends State<LayoutView> {
     _tabs.addAll([
       Tab(
         icon: Icon(Icons.show_chart_outlined),
-        text: "История",
+        text: S.current.historyTitle,
       ),
       Tab(
         icon: Icon(Icons.play_arrow_outlined),
-        text: "Старт",
+        text: S.current.startTitle,
       ),
-      Tab(icon: Icon(Icons.person_pin_circle_outlined), text: "Профиль")
+      Tab(
+          icon: Icon(Icons.person_pin_circle_outlined),
+          text: S.current.profileTitle)
     ]);
   }
 

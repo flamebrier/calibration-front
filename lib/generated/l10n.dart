@@ -235,6 +235,16 @@ class S {
     );
   }
 
+  /// `History`
+  String get historyTitle {
+    return Intl.message(
+      'History',
+      name: 'historyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `minutes`
   String get minutes0 {
     return Intl.message(

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:calibration/pages/start/start_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
@@ -84,19 +82,21 @@ class _GameViewState extends State<GameView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                            Text(
-                              S.of(context).title,
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
-                            Text(
-                              S.of(context).title,
-                              style: Theme.of(context).textTheme.bodyText2,
-                            )
-                          ])),
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    S.of(context).title,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
+                                  ),
+                                  Text(
+                                    S.of(context).title,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2,
+                                  )
+                                ])),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -125,7 +125,9 @@ class _GameViewState extends State<GameView> {
               padding: EdgeInsets.all(8.0),
               child: IconButton(
                 icon: Icon(Icons.close_rounded),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 iconSize: 36,
                 splashRadius: 28,
               ))

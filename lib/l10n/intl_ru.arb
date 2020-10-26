@@ -2,7 +2,7 @@
     "title": "Калибровка",
     "save": "Сохранить",
     "share": "Поделиться",
-
+    
     "startTitle": "Старт",
     "startCategorySuggestion": "Выберите категорию",
     "catFemale": "Женщинам",
@@ -21,8 +21,12 @@
 
     "launchTimeLeft": "Осталось",
     "launchChooseLeft": "Ещё выбрать",
+    
 
-    "profileTitle": "Профиль"
+    "profileTitle": "Профиль",
+
+
+    "historyTitle": "История",
 
 
     "minutes0": "минут",
@@ -35,5 +39,5 @@
     "peopleIn1": "человек играет",
     "peopleIn2": "человека играют",
     "peopleIn3": "человека играют",
-    "peopleIn5": "человек играют",
+    "peopleIn5": "человек играют"
 }
