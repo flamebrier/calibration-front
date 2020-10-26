@@ -44,6 +44,226 @@ class S {
       args: [],
     );
   }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get share {
+    return Intl.message(
+      'Share',
+      name: 'share',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start`
+  String get startTitle {
+    return Intl.message(
+      'Start',
+      name: 'startTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose category`
+  String get startCategorySuggestion {
+    return Intl.message(
+      'Choose category',
+      name: 'startCategorySuggestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Women`
+  String get catFemale {
+    return Intl.message(
+      'Women',
+      name: 'catFemale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Men`
+  String get catMale {
+    return Intl.message(
+      'Men',
+      name: 'catMale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kids`
+  String get catKids {
+    return Intl.message(
+      'Kids',
+      name: 'catKids',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shoes`
+  String get catShoes {
+    return Intl.message(
+      'Shoes',
+      name: 'catShoes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accessory`
+  String get catAccessory {
+    return Intl.message(
+      'Accessory',
+      name: 'catAccessory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electronic`
+  String get catElectronic {
+    return Intl.message(
+      'Electronic',
+      name: 'catElectronic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toys`
+  String get catToys {
+    return Intl.message(
+      'Toys',
+      name: 'catToys',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get catHome {
+    return Intl.message(
+      'Home',
+      name: 'catHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum game time`
+  String get startMaxTime {
+    return Intl.message(
+      'Maximum game time',
+      name: 'startMaxTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum people playing`
+  String get startMaxPeople {
+    return Intl.message(
+      'Maximum people playing',
+      name: 'startMaxPeople',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How much goods you'll choose?`
+  String get startGoodsCounter {
+    return Intl.message(
+      'How much goods you\'ll choose?',
+      name: 'startGoodsCounter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share link`
+  String get startLinkInfo {
+    return Intl.message(
+      'Share link',
+      name: 'startLinkInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profileTitle {
+    return Intl.message(
+      'Profile',
+      name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minutes0 {
+    return Intl.message(
+      'minutes',
+      name: 'minutes0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minute`
+  String get minutes1 {
+    return Intl.message(
+      'minute',
+      name: 'minutes1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minutes2 {
+    return Intl.message(
+      'minutes',
+      name: 'minutes2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minutes3 {
+    return Intl.message(
+      'minutes',
+      name: 'minutes3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes`
+  String get minutes5 {
+    return Intl.message(
+      'minutes',
+      name: 'minutes5',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

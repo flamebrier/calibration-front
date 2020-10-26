@@ -21,6 +21,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "cat" : MessageLookupByLibrary.simpleMessage("Категория"),
+    "profileTitle" : MessageLookupByLibrary.simpleMessage("Профиль"),
+    "startCategorySuggestion" : MessageLookupByLibrary.simpleMessage("Выберите категорию"),
+    "startTitle" : MessageLookupByLibrary.simpleMessage("Старт"),
     "title" : MessageLookupByLibrary.simpleMessage("Калибровка")
   };
 }

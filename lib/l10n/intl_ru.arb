@@ -1,3 +1,30 @@
 {
-    "title": "Калибровка"
+    "title": "Калибровка",
+    "save": "Сохранить",
+    "share": "Поделиться",
+
+    "startTitle": "Старт",
+    "startCategorySuggestion": "Выберите категорию",
+    "catFemale": "Женщинам",
+    "catMale": "Мужчинам",
+    "catKids": "Детям",
+    "catShoes": "Обувь",
+    "catAccessory": "Аксессуары",
+    "catElectronic": "Электроника",
+    "catToys": "Игрушки",
+    "catHome": "Дом",
+
+    "startMaxTime": "Максимальное время игры",
+    "startMaxPeople": "Максимальное количество игроков",
+    "startGoodsCounter": "Сколько нужно выбрать товаров?",
+    "startLinkInfo": "Ссылка для отправки",
+
+    "profileTitle": "Профиль"
+
+
+    "minutes0": "минут",
+    "minutes1": "минута",
+    "minutes2": "минуты",
+    "minutes3": "минуты",
+    "minutes5": "минут"
 }

@@ -1,8 +1,9 @@
 import 'package:calibration/pages/history.dart';
 import 'package:calibration/pages/profile.dart';
-import 'package:calibration/pages/start.dart';
 import 'package:calibration/styles.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/start/start.dart';
 
 class LayoutView extends StatefulWidget {
   @override
@@ -72,7 +73,7 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size.width / 2, cfg.size.height - radius);
+        offset + Offset(cfg.size.width / 2, cfg.size.height - radius * 2);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }

@@ -1,3 +1,33 @@
 {
-    "title": "Calibration"
+    "title": "Calibration",
+    "save": "Save",
+    "share": "Share",
+
+
+    "startTitle": "Start",
+
+    "startCategorySuggestion": "Choose category",
+    "catFemale": "Women",
+    "catMale": "Men",
+    "catKids": "Kids",
+    "catShoes": "Shoes",
+    "catAccessory": "Accessory",
+    "catElectronic": "Electronic",
+    "catToys": "Toys",
+    "catHome": "Home",
+
+    "startMaxTime": "Maximum game time",
+    "startMaxPeople": "Maximum people playing",
+    "startGoodsCounter": "How much goods you'll choose?",
+    "startLinkInfo": "Share link",
+
+
+    "profileTitle": "Profile",
+
+
+    "minutes0": "minutes",
+    "minutes1": "minute",
+    "minutes2": "minutes",
+    "minutes3": "minutes",
+    "minutes5": "minutes"
 }

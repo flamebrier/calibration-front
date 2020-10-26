@@ -21,6 +21,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "cat" : MessageLookupByLibrary.simpleMessage("Category"),
+    "catAccessory" : MessageLookupByLibrary.simpleMessage("Аксессуары"),
+    "catElectronic" : MessageLookupByLibrary.simpleMessage("Электроника"),
+    "catFemale" : MessageLookupByLibrary.simpleMessage("Женщинам"),
+    "catHome" : MessageLookupByLibrary.simpleMessage("Дом"),
+    "catKids" : MessageLookupByLibrary.simpleMessage("Детям"),
+    "catMale" : MessageLookupByLibrary.simpleMessage("Мужчинам"),
+    "catShoes" : MessageLookupByLibrary.simpleMessage("Обувь"),
+    "catToys" : MessageLookupByLibrary.simpleMessage("Игрушки"),
+    "profileTitle" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "startCategorySuggestion" : MessageLookupByLibrary.simpleMessage("Choose category"),
+    "startTitle" : MessageLookupByLibrary.simpleMessage("Start"),
     "title" : MessageLookupByLibrary.simpleMessage("Calibration")
   };
 }
