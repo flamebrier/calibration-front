@@ -3,6 +3,8 @@ import 'package:calibration/pages/history/stats.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
 
+import '../../styles.dart';
+
 class HistoryPage extends StatefulWidget {
   @override
   _HistoryPageState createState() => _HistoryPageState();

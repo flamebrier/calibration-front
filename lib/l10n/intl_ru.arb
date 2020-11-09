@@ -1,6 +1,7 @@
 {
     "title": "Калибровка",
     "save": "Сохранить",
+    "cancel": "Отмена",
     "share": "Поделиться",
     
     "startTitle": "Старт",
@@ -16,14 +17,19 @@
 
     "startMaxTime": "Максимальное время игры",
     "startMaxPeople": "Максимальное количество игроков",
-    "startGoodsCounter": "Сколько нужно выбрать товаров?",
-    "startLinkInfo": "Ссылка для отправки",
+    "startGoodsCounter": "Сколько нужно выбрать?",
+    "startLinkInfo": "Id для входа",
 
     "launchTimeLeft": "Осталось",
     "launchChooseLeft": "Ещё выбрать",
     
 
     "profileTitle": "Профиль",
+    "profileId": "Email",
+    "profileNickname": "Никнейм",
+    "profileName": "Имя",
+    "profileBirth": "Дата рождения",
+    "profileSex": "Пол",
 
     "historyTitle": "История",
 
@@ -35,11 +41,11 @@
     "minutes3": "минуты",
     "minutes5": "минут",
 
-    "peopleIn0": "человек играет",
-    "peopleIn1": "человек играет",
-    "peopleIn2": "человека играют",
-    "peopleIn3": "человека играют",
-    "peopleIn5": "человек играют",
+    "peopleIn0": "никто не проходил",
+    "peopleIn1": "человек прошло",
+    "peopleIn2": "человека прошло",
+    "peopleIn3": "человека прошло",
+    "peopleIn5": "человек прошло",
     
     "matches0": "совпадений",
     "matches1": "совпадение",

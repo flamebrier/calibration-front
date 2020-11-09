@@ -15,7 +15,7 @@ class _HistoryViewState extends State<HistoryView>
     return ListView(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.all(8.0),
           child: HistoryTile(date: DateTime(2020, 10, 12, 12, 55),
           category: S.of(context).catAccessory,
           matches: 6,
@@ -23,7 +23,7 @@ class _HistoryViewState extends State<HistoryView>
           user2: "vvdimon",),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.all(8.0),
           child: HistoryTile(date: DateTime(2020, 10, 12, 12, 55),
           category: S.of(context).catElectronic,
           matches: 8,
@@ -31,7 +31,7 @@ class _HistoryViewState extends State<HistoryView>
           user2: "vvdimon",),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.all(8.0),
           child: HistoryTile(date: DateTime(2020, 10, 12, 12, 55),
           category: S.of(context).catMale,
           matches: 3,

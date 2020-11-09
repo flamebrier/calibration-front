@@ -1,6 +1,7 @@
 {
     "title": "Calibration",
     "save": "Save",
+    "cancel": "Cancel",
     "share": "Share",
 
     "startTitle": "Start",
@@ -17,12 +18,17 @@
     "startMaxTime": "Maximum game time",
     "startMaxPeople": "Maximum people playing",
     "startGoodsCounter": "How much goods you'll choose?",
-    "startLinkInfo": "Share link",
+    "startLinkInfo": "Login code",
 
     "launchTimeLeft": "Time left",
     "launchChooseLeft": "Left to choose",
 
     "profileTitle": "Profile",
+    "profileId": "Email",
+    "profileNickname": "Nickname",
+    "profileName": "Name",
+    "profileBirth": "Birth Date",
+    "profileSex": "Sex",
 
     "historyTitle": "History",
 
@@ -34,11 +40,11 @@
     "minutes3": "minutes",
     "minutes5": "minutes",
 
-    "peopleIn0": "people in game",
+    "peopleIn0": "nobody finished",
     "peopleIn1": "solo game",
     "peopleIn2": "duo game",
-    "peopleIn3": "people in game",
-    "peopleIn5": "people in game",
+    "peopleIn3": "people finished",
+    "peopleIn5": "people finished",
 
     "matches0": "matches",
     "matches1": "match",

@@ -29,7 +29,9 @@ class _StartPageState extends State<StartPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: AppBar(title: Text(S.current.startTitle)),
+      appBar: AppBar(
+        title: Text(S.current.startTitle),
+      ),
       body: _chooseViewBuilder(context),
     );
   }

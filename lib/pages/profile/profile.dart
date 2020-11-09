@@ -1,6 +1,9 @@
 import 'package:calibration/pages/profile/auth.dart';
+import 'package:calibration/pages/profile/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
+
+import '../../styles.dart';
 
 enum Sex { undefined, male, female }
 
@@ -23,10 +26,17 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    if (_user == null) {
+    /* if (_user == null) {
       return AuthView();
-    }
-    return ListView(children: []);
+    } */
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(S.current.profileTitle),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+          child: UserInfoView(),
+        ));
   }
 
   @override

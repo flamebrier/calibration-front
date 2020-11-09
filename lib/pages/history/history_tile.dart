@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:calibration/generated/l10n.dart';
 
+import '../../styles.dart';
+
 class HistoryTile extends StatelessWidget {
   final DateTime date;
   final String category;
@@ -16,12 +18,13 @@ class HistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3,
+      elevation: 0,
       margin: EdgeInsets.zero,
       shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.zero)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(Styles.radius))),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+        decoration: BoxDecoration(border: Border.all(color: Styles.borderColor)),
         child: Column(children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(DateFormat.yMMMd()

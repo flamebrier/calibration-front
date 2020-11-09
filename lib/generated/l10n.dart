@@ -55,6 +55,16 @@ class S {
     );
   }
 
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Share`
   String get share {
     return Intl.message(
@@ -195,10 +205,10 @@ class S {
     );
   }
 
-  /// `Share link`
+  /// `Login code`
   String get startLinkInfo {
     return Intl.message(
-      'Share link',
+      'Login code',
       name: 'startLinkInfo',
       desc: '',
       args: [],
@@ -230,6 +240,56 @@ class S {
     return Intl.message(
       'Profile',
       name: 'profileTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get profileId {
+    return Intl.message(
+      'Email',
+      name: 'profileId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nickname`
+  String get profileNickname {
+    return Intl.message(
+      'Nickname',
+      name: 'profileNickname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get profileName {
+    return Intl.message(
+      'Name',
+      name: 'profileName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Birth Date`
+  String get profileBirth {
+    return Intl.message(
+      'Birth Date',
+      name: 'profileBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sex`
+  String get profileSex {
+    return Intl.message(
+      'Sex',
+      name: 'profileSex',
       desc: '',
       args: [],
     );
@@ -305,10 +365,10 @@ class S {
     );
   }
 
-  /// `people in game`
+  /// `nobody finished`
   String get peopleIn0 {
     return Intl.message(
-      'people in game',
+      'nobody finished',
       name: 'peopleIn0',
       desc: '',
       args: [],
@@ -335,20 +395,20 @@ class S {
     );
   }
 
-  /// `people in game`
+  /// `people finished`
   String get peopleIn3 {
     return Intl.message(
-      'people in game',
+      'people finished',
       name: 'peopleIn3',
       desc: '',
       args: [],
     );
   }
 
-  /// `people in game`
+  /// `people finished`
   String get peopleIn5 {
     return Intl.message(
-      'people in game',
+      'people finished',
       name: 'peopleIn5',
       desc: '',
       args: [],

@@ -1,5 +1,6 @@
 import 'package:calibration/pages/start/start_settings.dart';
 import 'package:calibration/generated/l10n.dart';
+import 'package:calibration/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -32,7 +33,8 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: Alignment.bottomCenter, children: [
+    return Stack(alignment: Alignment.bottomCenter,
+    children: [
       Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25),
         child: ListView(children: <Widget>[
@@ -46,7 +48,7 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
                 child: Slider(
                   min: 1,
                   max: 30,
-                  divisions: 29,
+                  activeColor: Styles.primaryColor,
                   onChanged: (double value) {
                     if (mounted) {
                       setState(() {
@@ -88,8 +90,8 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
                 flex: 7,
                 child: Slider(
                   min: 1,
-                  max: 10,
-                  divisions: 30,
+                  max: 6,
+                  activeColor: Styles.primaryColor,
                   onChanged: (double value) {
                     if (mounted) {
                       setState(() {
@@ -115,7 +117,8 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
                 flex: 7,
                 child: Slider(
                   min: 1,
-                  max: 100,
+                  max: 35,
+                  activeColor: Styles.primaryColor,
                   onChanged: (double value) {
                     setState(() {
                       _isSaved = false;
@@ -147,17 +150,20 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
               readOnly: true,
             )
           ] else
-            Padding(
-              padding: const EdgeInsets.only(top: 25),
-              child: RaisedButton(
-                  child: Text(S.current.save),
-                  onPressed: () {
-                    if (mounted) {
-                      setState(() {
-                        _isSaved = true;
-                      });
-                    }
-                  }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: RaisedButton(
+                    child: Text(S.current.save),
+                    onPressed: () {
+                      if (mounted) {
+                        setState(() {
+                          _isSaved = true;
+                        });
+                      }
+                    }),
+              )],
             ),
           if (_settings.allFilled && _isSaved)
             IconButton(
@@ -172,6 +178,7 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
       if (_settings.allFilled && _isSaved)
         IconButton(
           icon: Icon(Icons.play_circle_fill_rounded),
+          color: Styles.actionColor,
           splashRadius: 24,
           onPressed: () {
             if (widget.launch != null) {

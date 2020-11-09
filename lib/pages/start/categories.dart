@@ -37,7 +37,10 @@ class _CategoriesViewState extends State<CategoriesView> {
             itemCount: _categories.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(_categories[index]),
+                title: Text(
+                  _categories[index],
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
                 onTap: () {
                   if (widget.onChoose != null) {
                     widget.onChoose(_categories[index]);

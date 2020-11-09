@@ -42,8 +42,8 @@ class _LayoutViewState extends State<LayoutView> {
         child: Scaffold(
           bottomNavigationBar: TabBar(
             tabs: _tabs,
-            unselectedLabelColor: Styles.actionColor,
-            labelColor: Styles.primaryColor,
+            unselectedLabelColor: Styles.darkColor,
+            labelColor: Styles.actionColor,
             indicator:
                 CircleTabIndicator(color: Styles.primaryColor, radius: 3),
           ),
