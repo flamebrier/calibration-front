@@ -20,11 +20,11 @@ class HistoryTile extends StatelessWidget {
     return Card(
       elevation: 0,
       margin: EdgeInsets.zero,
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(Styles.radius))),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(Styles.radius)),
+          side: BorderSide(color: Styles.borderColor)),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 8),
-        decoration: BoxDecoration(border: Border.all(color: Styles.borderColor)),
         child: Column(children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(DateFormat.yMMMd()

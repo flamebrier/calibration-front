@@ -3,6 +3,8 @@
     "save": "Сохранить",
     "cancel": "Отмена",
     "share": "Поделиться",
+
+    "signInGoogle": "Войти через Google",
     
     "startTitle": "Старт",
     "startCategorySuggestion": "Выберите категорию",
