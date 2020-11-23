@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileTitle" : MessageLookupByLibrary.simpleMessage("Profile"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "share" : MessageLookupByLibrary.simpleMessage("Share"),
+    "signInGoogle" : MessageLookupByLibrary.simpleMessage("Sign in with Google"),
     "startCategorySuggestion" : MessageLookupByLibrary.simpleMessage("Choose category"),
     "startGoodsCounter" : MessageLookupByLibrary.simpleMessage("How much goods you\'ll choose?"),
     "startLinkInfo" : MessageLookupByLibrary.simpleMessage("Login code"),

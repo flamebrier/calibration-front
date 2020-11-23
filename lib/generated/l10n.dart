@@ -75,6 +75,16 @@ class S {
     );
   }
 
+  /// `Sign in with Google`
+  String get signInGoogle {
+    return Intl.message(
+      'Sign in with Google',
+      name: 'signInGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Start`
   String get startTitle {
     return Intl.message(
