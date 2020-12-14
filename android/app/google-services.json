@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "706490707887",
+    "firebase_url": "https://calibration-pri117.firebaseio.com",
+    "project_id": "calibration-pri117",
+    "storage_bucket": "calibration-pri117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706490707887:android:ab3bb333ffdf994795095a",
+        "android_client_info": {
+          "package_name": "com.example.calibration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706490707887-adsj88h5mo0ms5u74rkhfjem6e1lo6r0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.calibration",
+            "certificate_hash": "35f82d18cc32b5b40ed2cdecb86feaac8ca5120c"
+          }
+        },
+        {
+          "client_id": "706490707887-g1m30ussi0o4vspv82n7tflgp4l7k8o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuVd-LvPUMay1Qum7EVMGOb4WnjAZmag0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706490707887-g1m30ussi0o4vspv82n7tflgp4l7k8o8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
