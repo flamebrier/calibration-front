@@ -18,6 +18,8 @@ dependencies:
   firebase_auth: 0.18.3
   firebase_core: 0.5.2
   google_sign_in: 4.5.5
+  http: 0.12.2
+  cached_network_image: 2.4.1
 
 dev_dependencies:
   flutter_test:

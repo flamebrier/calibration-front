@@ -1,23 +1,35 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:calibration/pages/start/start_settings.dart';
 import 'package:calibration/widgets/circle_icon_button.dart';
 import 'package:calibration/widgets/countdown.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 import '../../styles.dart';
 
 class Post {
-  Color color;
-  String name;
-  String description;
+  int id;
+  String title;
+  String pictureUrl;
+
+  @override
+  String toString() {
+    return "id: $id, title: $title, pic: $pictureUrl\n";
+  }
 }
 
 class GameView extends StatefulWidget {
   final StartSettings settings;
+  final Response quiz;
 
-  const GameView({Key key, @required this.settings}) : super(key: key);
+  const GameView({Key key, @required this.settings, this.quiz})
+      : super(key: key);
   @override
   _GameViewState createState() => _GameViewState();
 }
@@ -31,7 +43,25 @@ class _GameViewState extends State<GameView> {
 
   format(Duration d) => d.toString().split('.').first.padLeft(8, "0");
 
-  List<Post> posts = [
+  var quiz;
+
+  List<Post> posts = List<Post>();
+
+  @override
+  void initState() {
+    super.initState();
+    quiz = json.decode(widget.quiz?.body);
+    log(quiz.toString());
+    for (final e in quiz["Questions"]) {
+      posts.add(Post()
+        ..id = e["Id"]
+        ..title = e["Title"]
+        ..pictureUrl = e["PictureUrl"]);
+    }
+    log(posts.toString());
+  }
+
+/*   List<Post> posts = [
     Post()
       ..color = Colors.red
       ..name = "Красный"
@@ -52,7 +82,7 @@ class _GameViewState extends State<GameView> {
       ..color = Colors.amber
       ..name = "Желтый"
       ..description = "Желтый цвет",
-  ];
+  ]; */
 
   CardController controller = CardController();
 
@@ -126,12 +156,17 @@ class _GameViewState extends State<GameView> {
                       alignment: Alignment.bottomCenter,
                       children: <Widget>[
                         SingleChildScrollView(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 600,
-                            color: posts[index]?.color ?? Colors.white,
-                          ),
-                        ),
+                            child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 600,
+                                // color: posts[index]?.color ?? Colors.white,
+                                child: CachedNetworkImage(
+                                  imageUrl: posts[index].pictureUrl,
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ))),
                         Container(
                           color: Styles.brightColor,
                           padding: EdgeInsets.symmetric(vertical: 5),
@@ -146,19 +181,19 @@ class _GameViewState extends State<GameView> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          posts[index]?.name ??
+                                          posts[index]?.title ??
                                               S.of(context).title,
                                           style: Theme.of(context)
                                               .textTheme
                                               .headline5,
-                                        ),
+                                        ) /* ,
                                         Text(
                                           posts[index]?.description ??
                                               S.of(context).title,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
-                                        )
+                                        ) */
                                       ])),
                               Container(
                                 height: 10,
