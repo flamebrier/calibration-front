@@ -285,26 +285,6 @@ class S {
     );
   }
 
-  /// `Birth Date`
-  String get profileBirth {
-    return Intl.message(
-      'Birth Date',
-      name: 'profileBirth',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sex`
-  String get profileSex {
-    return Intl.message(
-      'Sex',
-      name: 'profileSex',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `History`
   String get historyTitle {
     return Intl.message(

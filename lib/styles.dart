@@ -9,6 +9,7 @@ class Styles {
   static Color actionColor = Color(0xFF0079d3);
   static Color brightColor = Colors.white;
   static Color darkColor = Colors.grey.shade900;
+  static Color semiDarkColor = Colors.grey.shade700;
   static double radius = 10;
 
   static final ThemeData mainTheme = ThemeData(
