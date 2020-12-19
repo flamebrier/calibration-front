@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
 
+import '../../auth_service.dart';
+
 enum Sex { undefined, male, female }
 
 class Profile {
@@ -26,19 +28,21 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance?.authStateChanges()?.listen((user) {
+    // signInWithGoogle();
+    /* FirebaseAuth.instance?.authStateChanges()?.listen((user) {
       if (mounted) {
         setState(() {
           _user = user;
         });
       }
-    });
+    }); */
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    if (_user == null) {
+    // _user = FirebaseAuth.instance?.currentUser;
+    if (FirebaseAuth.instance?.currentUser == null) {
       return AuthView();
     }
     return Scaffold(
