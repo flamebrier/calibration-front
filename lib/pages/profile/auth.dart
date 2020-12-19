@@ -1,4 +1,5 @@
-import 'package:calibration/generated/l10n.dart';
+import 'package:calibration/styles.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import '../../auth_service.dart';

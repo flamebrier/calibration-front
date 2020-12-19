@@ -1,6 +1,7 @@
 import 'package:calibration/pages/history/history.dart';
 import 'package:calibration/pages/profile/profile.dart';
 import 'package:calibration/styles.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/start/start.dart';
@@ -35,22 +36,36 @@ class _LayoutViewState extends State<LayoutView> {
     ]);
   }
 
+  Future<FirebaseApp> getData() async {
+    return await Firebase.initializeApp();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: _tabs.length,
-        child: Scaffold(
-          bottomNavigationBar: TabBar(
-            tabs: _tabs,
-            unselectedLabelColor: Styles.darkColor,
-            labelColor: Styles.actionColor,
-            indicator:
-                CircleTabIndicator(color: Styles.primaryColor, radius: 3),
-          ),
-          body: TabBarView(
-            children: [HistoryPage(), StartPage(), ProfilePage()],
-          ),
-        ));
+    return FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot) {
+/*           if (snapshot.connectionState != ConnectionState.active) {
+            return Center(
+                child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Styles.primaryColor),
+            ));
+          } */
+          return DefaultTabController(
+              length: _tabs.length,
+              child: Scaffold(
+                bottomNavigationBar: TabBar(
+                  tabs: _tabs,
+                  unselectedLabelColor: Styles.darkColor,
+                  labelColor: Styles.actionColor,
+                  indicator:
+                      CircleTabIndicator(color: Styles.primaryColor, radius: 3),
+                ),
+                body: TabBarView(
+                  children: [HistoryPage(), StartPage(), ProfilePage()],
+                ),
+              ));
+        });
   }
 }
 
