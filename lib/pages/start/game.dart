@@ -160,13 +160,54 @@ class _GameViewState extends State<GameView> {
                                 width: MediaQuery.of(context).size.width,
                                 height: 600,
                                 // color: posts[index]?.color ?? Colors.white,
-                                child: CachedNetworkImage(
+                                child: Image.network(
+                                  posts[index].pictureUrl,
+                                  frameBuilder: (BuildContext context,
+                                      Widget child,
+                                      int frame,
+                                      bool wasSynchronouslyLoaded) {
+                                    if (frame == null) {
+                                      return Container();
+                                    }
+                                    if (wasSynchronouslyLoaded) {
+                                      return child;
+                                    }
+                                    return AnimatedOpacity(
+                                      child: child,
+                                      opacity: frame == null ? 0 : 1,
+                                      duration: const Duration(seconds: 1),
+                                      curve: Curves.easeOut,
+                                    );
+                                  },
+                                  loadingBuilder: (BuildContext context,
+                                      Widget child,
+                                      ImageChunkEvent loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Styles.primaryColor),
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                )
+                                /* CachedNetworkImage(
                                   imageUrl: posts[index].pictureUrl,
                                   placeholder: (context, url) =>
                                       CircularProgressIndicator(),
                                   errorWidget: (context, url, error) =>
                                       Icon(Icons.error),
-                                ))),
+                                ) */
+                                )),
                         Container(
                           color: Styles.brightColor,
                           padding: EdgeInsets.symmetric(vertical: 5),

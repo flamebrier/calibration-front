@@ -30,6 +30,7 @@
     "profileId": "Email",
     "profileNickname": "Никнейм",
     "profileName": "Имя",
+    "profileSuggest": "Вы не авторизованы. Хотите войти?",
 
     "historyTitle": "История",
 

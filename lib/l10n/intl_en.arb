@@ -29,6 +29,7 @@
     "profileId": "Email",
     "profileNickname": "Nickname",
     "profileName": "Name",
+    "profileSuggest": "You are not authorized. Want to sign in?",
 
     "historyTitle": "History",
 

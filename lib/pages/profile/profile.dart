@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage>
   final TextEditingController _nickNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  Profile _localUser = Profile();
+  Profile _localUser;
 
   bool _isEditing = false;
 
@@ -39,22 +39,13 @@ class _ProfilePageState extends State<ProfilePage>
     super.initState();
     FirebaseAuth.instance?.authStateChanges()?.listen((user) {
       if (user != null) {
-        if (mounted) {
-          setState(() {
-            _updateControllers(Profile()
-              ..id = user?.email
-              ..name = user?.displayName
-              ..photoUrl = user?.photoURL);
-          });
-        }
+        _updateControllers(Profile()
+          ..id = user?.email
+          ..name = user?.displayName
+          ..photoUrl = user?.photoURL);
+      } else {
+        _localUser = null;
       }
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _photoController.removeListener(() {
       if (mounted) {
         setState(() {});
       }
@@ -62,10 +53,27 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     if (_localUser == null) {
-      return AuthView();
+      return Scaffold(
+          appBar: AppBar(
+            title: Text(S.current.profileTitle),
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(S.current.profileSuggest),
+              Container(height: 25),
+              AuthView(),
+            ],
+          ));
     }
     return GestureDetector(
       onTap: () {
@@ -78,43 +86,54 @@ class _ProfilePageState extends State<ProfilePage>
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
             child: ListView(shrinkWrap: true, children: [
-              Container(
-                  height: 100,
-                  width: 100,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(shape: BoxShape.circle),
-                  child: Image.network(
-                    _photoController.value,
-                    frameBuilder: (BuildContext context, Widget child,
-                        int frame, bool wasSynchronouslyLoaded) {
-                      if (frame == null) {
-                        return Container();
-                      }
-                      if (wasSynchronouslyLoaded) {
-                        return child;
-                      }
-                      return AnimatedOpacity(
-                        child: child,
-                        opacity: frame == null ? 0 : 1,
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.easeOut,
-                      );
-                    },
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              Styles.primaryColor),
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes
-                              : null,
-                        ),
-                      );
-                    },
-                  )),
+              Stack(alignment: Alignment.topCenter, children: [
+                Container(
+                    height: 100,
+                    width: 100,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(shape: BoxShape.circle),
+                    child: Image.network(
+                      _photoController.value,
+                      frameBuilder: (BuildContext context, Widget child,
+                          int frame, bool wasSynchronouslyLoaded) {
+                        if (frame == null) {
+                          return Container();
+                        }
+                        if (wasSynchronouslyLoaded) {
+                          return child;
+                        }
+                        return AnimatedOpacity(
+                          child: child,
+                          opacity: frame == null ? 0 : 1,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.easeOut,
+                        );
+                      },
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Styles.primaryColor),
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes
+                                : null,
+                          ),
+                        );
+                      },
+                    )),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                      splashRadius: 22,
+                      icon: Icon(Icons.exit_to_app_outlined),
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                      }),
+                )
+              ]),
               Row(children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
@@ -206,6 +225,9 @@ class _ProfilePageState extends State<ProfilePage>
   _updateControllers([Profile user]) {
     FocusScope.of(context).requestFocus(FocusNode());
     if (user != null) {
+      if (_localUser == null) {
+        _localUser = Profile();
+      }
       if (user.id != null) {
         _localUser.id = user.id;
       }

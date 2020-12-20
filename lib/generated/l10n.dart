@@ -285,6 +285,16 @@ class S {
     );
   }
 
+  /// `You are not authorized. Want to sign in?`
+  String get profileSuggest {
+    return Intl.message(
+      'You are not authorized. Want to sign in?',
+      name: 'profileSuggest',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `History`
   String get historyTitle {
     return Intl.message(

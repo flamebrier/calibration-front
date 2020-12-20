@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileId" : MessageLookupByLibrary.simpleMessage("Email"),
     "profileName" : MessageLookupByLibrary.simpleMessage("Имя"),
     "profileNickname" : MessageLookupByLibrary.simpleMessage("Никнейм"),
+    "profileSuggest" : MessageLookupByLibrary.simpleMessage("Вы не авторизованы. Хотите войти?"),
     "profileTitle" : MessageLookupByLibrary.simpleMessage("Профиль"),
     "save" : MessageLookupByLibrary.simpleMessage("Сохранить"),
     "share" : MessageLookupByLibrary.simpleMessage("Поделиться"),

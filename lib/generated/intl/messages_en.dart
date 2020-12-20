@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileId" : MessageLookupByLibrary.simpleMessage("Email"),
     "profileName" : MessageLookupByLibrary.simpleMessage("Name"),
     "profileNickname" : MessageLookupByLibrary.simpleMessage("Nickname"),
+    "profileSuggest" : MessageLookupByLibrary.simpleMessage("You are not authorized. Want to sign in?"),
     "profileTitle" : MessageLookupByLibrary.simpleMessage("Profile"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "share" : MessageLookupByLibrary.simpleMessage("Share"),
