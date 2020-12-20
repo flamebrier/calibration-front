@@ -23,6 +23,11 @@ class _CategoriesViewState extends State<CategoriesView> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

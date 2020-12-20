@@ -7,15 +7,11 @@ import 'package:calibration/generated/l10n.dart';
 
 import '../../styles.dart';
 
-enum Sex { undefined, male, female }
-
 class Profile {
   String id;
   String nickName;
   String name;
   String photoUrl;
-
-  Profile();
 }
 
 class ProfilePage extends StatefulWidget {
@@ -231,12 +227,8 @@ class _ProfilePageState extends State<ProfilePage>
       if (user.id != null) {
         _localUser.id = user.id;
       }
-      if (user.name != null) {
-        _localUser.name = user.name;
-      }
-      if (user.nickName != null) {
-        _localUser.nickName = user.nickName;
-      }
+      _localUser.name = user.name ?? "";
+      _localUser.nickName = user.nickName ?? "";
       if (user.photoUrl != null) {
         _localUser.photoUrl = user.photoUrl;
       }

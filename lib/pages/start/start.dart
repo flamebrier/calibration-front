@@ -3,14 +3,8 @@ import 'package:calibration/pages/start/choose_start_settings.dart';
 import 'package:calibration/pages/start/game.dart';
 import 'package:calibration/pages/start/start_settings.dart';
 import 'package:calibration/generated/l10n.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:calibration/data/loader.dart';
 import 'package:flutter/material.dart';
-
-import 'dart:developer';
-import 'dart:io';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 class StartPage extends StatefulWidget {
   final StartSettings initialSettings;
@@ -65,26 +59,12 @@ class _StartPageState extends State<StartPage>
         }
       },
       launch: (settings) async {
-        var response = await _getQuizById();
+        var response = await Loader.instance.getQuizById();
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
                 GameView(settings: _settings, quiz: response)));
       },
     );
-  }
-
-  Future<Response> _getQuizById() async {
-    Uri uri = Uri.http('10.0.2.2:5000', '/api/quiz/2');
-
-    final headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-      HttpHeaders.authorizationHeader:
-          'Bearer ' + await FirebaseAuth.instance.currentUser.getIdToken()
-    };
-
-    final response = await http.get(uri, headers: headers);
-
-    return response;
   }
 
   @override
