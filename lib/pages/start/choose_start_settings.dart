@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class ChooseStartSettings extends StatefulWidget {
   final StartSettings initialSettings;
-  final Function(StartSettings, TextEditingController) onChoose;
+  final Future<void> Function(StartSettings, TextEditingController) onChoose;
   final Function(StartSettings) launch;
 
   const ChooseStartSettings(
@@ -156,9 +156,9 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
                   padding: const EdgeInsets.only(top: 25),
                   child: RaisedButton(
                       child: Text(S.current.save),
-                      onPressed: () {
+                      onPressed: () async {
                         if (widget.onChoose != null) {
-                          widget.onChoose(_settings, _linkController);
+                          await widget.onChoose(_settings, _linkController);
                         }
                         if (mounted) {
                           setState(() {

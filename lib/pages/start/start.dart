@@ -28,6 +28,7 @@ class _StartPageState extends State<StartPage>
   StartSettings _settings = StartSettings();
   User _user;
   Quiz _quiz;
+  Session _session;
 
   @override
   void initState() {
@@ -169,18 +170,40 @@ class _StartPageState extends State<StartPage>
               var response =
                   await Loader.instance.createSession(_settings, _quiz.id);
               final body = json.decode(response.body);
+              final jsonQuiz = body["Quiz"];
               controller.text = body["Id"].toString();
               if (mounted) {
                 setState(() {
                   _settings = settings;
                 });
               }
+              List<Post> questions = List<Post>();
+              for (final e in jsonQuiz["Questions"]) {
+                questions.add(Post()
+                  ..id = e["Id"]
+                  ..title = e["Title"]
+                  ..pictureUrl = e["PictureUrl"]);
+              }
+              _quiz = Quiz()
+                ..categoryId = jsonQuiz["QuizCategory"]["Id"]
+                ..id = jsonQuiz["Id"]
+                ..countOfQuestions = jsonQuiz["CountOfQuestions"]
+                ..dateOfCreation = DateTime.parse(body["DateOfCreation"])
+                ..settings = (QuizSettings()
+                  ..id = jsonQuiz["QuizSettings"]["Id"]
+                  ..filterTypeId = jsonQuiz["QuizSettings"]["FilterType"]
+                  ..topFilter = jsonQuiz["QuizSettings"]["TopFilter"])
+                ..questions = questions;
+              _session = Session()
+                ..id = body["Id"]
+                ..creatorId = body["CreatorId"]
+                ..dateOfCreation = DateTime.parse(body["DateOfCreation"])
+                ..settings = _settings
+                ..quiz = _quiz;
             },
             launch: (settings) async {
-              var response = await Loader.instance.getQuizById();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      GameView(settings: _settings, quiz: response)));
+                  builder: (context) => GameView(session: _session)));
             },
           ),
         ),

@@ -48,10 +48,31 @@ class QuizSettings {
   int filterTypeId;
 }
 
+class Post {
+  int id;
+  String title;
+  String pictureUrl;
+
+  @override
+  String toString() {
+    return "id: $id, title: $title, pic: $pictureUrl\n";
+  }
+}
+
 class Quiz {
   int id;
   QuizSettings settings;
   int categoryId;
   DateTime dateOfCreation;
   int countOfQuestions;
+  List<Post> questions;
+}
+
+class Session {
+  int id;
+  StartSettings settings;
+  Quiz quiz;
+  DateTime dateOfCreation;
+  int creatorId;
+  var participants;
 }

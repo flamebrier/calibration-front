@@ -13,23 +13,10 @@ import 'package:intl/intl.dart';
 
 import '../../styles.dart';
 
-class Post {
-  int id;
-  String title;
-  String pictureUrl;
-
-  @override
-  String toString() {
-    return "id: $id, title: $title, pic: $pictureUrl\n";
-  }
-}
-
 class GameView extends StatefulWidget {
-  final StartSettings settings;
-  final http.Response quiz;
+  final Session session;
 
-  const GameView({Key key, @required this.settings, this.quiz})
-      : super(key: key);
+  const GameView({Key key, @required this.session}) : super(key: key);
   @override
   _GameViewState createState() => _GameViewState();
 }
@@ -43,22 +30,14 @@ class _GameViewState extends State<GameView> {
 
   format(Duration d) => d.toString().split('.').first.padLeft(8, "0");
 
-  var quiz;
-
-  List<Post> posts = List<Post>();
+  List<Post> _posts = List<Post>();
+  StartSettings _settings;
 
   @override
   void initState() {
     super.initState();
-    quiz = json.decode(widget.quiz?.body);
-    log(quiz.toString());
-    for (final e in quiz["Questions"]) {
-      posts.add(Post()
-        ..id = e["Id"]
-        ..title = e["Title"]
-        ..pictureUrl = e["PictureUrl"]);
-    }
-    log(posts.toString());
+    _posts = widget.session.quiz.questions;
+    _settings = widget.session.settings;
   }
 
 /*   List<Post> posts = [
@@ -101,7 +80,7 @@ class _GameViewState extends State<GameView> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.settings == null) {
+    if (widget.session == null) {
       return Container();
     }
     return Scaffold(
@@ -128,13 +107,13 @@ class _GameViewState extends State<GameView> {
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
               Text(S.of(context).launchTimeLeft),
               DurationCountdown(
-                  from: widget.settings.maxTime ?? Duration(minutes: 10),
+                  from: _settings.maxTime ?? Duration(minutes: 10),
                   builder: (context, snapshot) {
                     return Text(
                       format(snapshot?.data),
                       style: ((snapshot?.data?.inSeconds ??
-                                  widget.settings.maxTime.inSeconds) >
-                              widget.settings.maxTime.inSeconds / 10)
+                                  _settings.maxTime.inSeconds) >
+                              _settings.maxTime.inSeconds / 10)
                           ? Theme.of(context).textTheme.headline5
                           : Theme.of(context)
                               .textTheme
@@ -153,7 +132,7 @@ class _GameViewState extends State<GameView> {
               child: TinderSwapCard(
             cardController: controller,
             stackNum: 3,
-            totalNum: posts.length ?? 0,
+            totalNum: _posts.length ?? 0,
             maxHeight: MediaQuery.of(context).size.height,
             maxWidth: MediaQuery.of(context).size.width,
             minWidth: 100.0,
@@ -186,7 +165,7 @@ class _GameViewState extends State<GameView> {
                       Expanded(
                         child: SingleChildScrollView(
                           child: CachedNetworkImage(
-                              imageUrl: posts[index].pictureUrl,
+                              imageUrl: _posts[index].pictureUrl,
                               /* frameBuilder: (BuildContext context,
                                             Widget child,
                                             int frame,
@@ -235,7 +214,7 @@ class _GameViewState extends State<GameView> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        posts[index]?.title ??
+                                        _posts[index]?.title ??
                                             S.of(context).title,
                                         style: Theme.of(context)
                                             .textTheme
