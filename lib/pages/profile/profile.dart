@@ -1,18 +1,12 @@
 import 'dart:developer';
 
+import 'package:calibration/data/models.dart';
 import 'package:calibration/pages/profile/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
 
 import '../../styles.dart';
-
-class Profile {
-  String id;
-  String nickName;
-  String name;
-  String photoUrl;
-}
 
 class ProfilePage extends StatefulWidget {
   @override

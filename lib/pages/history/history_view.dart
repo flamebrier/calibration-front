@@ -25,7 +25,7 @@ class _HistoryViewState extends State<HistoryView>
         padding: const EdgeInsets.all(8.0),
         child: HistoryTile(
           date: DateTime(2020, 10, 12, 12, 55),
-          category: S.of(context).catAccessory,
+          category: S.of(context).catMemes,
           matches: 6,
           user1: "flamebrier",
           user2: "vvdimon",
@@ -35,7 +35,7 @@ class _HistoryViewState extends State<HistoryView>
         padding: const EdgeInsets.all(8.0),
         child: HistoryTile(
           date: DateTime(2020, 10, 12, 12, 55),
-          category: S.of(context).catElectronic,
+          category: S.of(context).catMemes,
           matches: 8,
           user1: "flamebrier",
           user2: "vvdimon",
@@ -45,7 +45,7 @@ class _HistoryViewState extends State<HistoryView>
         padding: const EdgeInsets.all(8.0),
         child: HistoryTile(
           date: DateTime(2020, 10, 12, 12, 55),
-          category: S.of(context).catMale,
+          category: S.of(context).catPics,
           matches: 3,
           user1: "vvdimon",
           user2: "flamebrier",

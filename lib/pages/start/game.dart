@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:calibration/pages/start/start_settings.dart';
+import 'package:calibration/data/models.dart';
 import 'package:calibration/widgets/circle_icon_button.dart';
 import 'package:calibration/widgets/countdown.dart';
 import 'package:flutter/material.dart';

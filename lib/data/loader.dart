@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +22,14 @@ class Loader {
     };
   }
 
+  Future<http.Response> getCategories() async {
+    Uri uri = Uri.http('10.0.2.2:5000', '/api/quiz/categories');
+
+    final response = await http.get(uri);
+
+    return response;
+  }
+
   Future<http.Response> getQuizById() async {
     Uri uri = Uri.http('10.0.2.2:5000', '/api/quiz/2');
 
@@ -31,15 +38,15 @@ class Loader {
     return response;
   }
 
-  void _getQuizes() async {
+  Future<http.Response> getQuizes() async {
     Uri uri = Uri.http('10.0.2.2:5000', '/api/quiz/bycategory/2');
 
     final response = await http.get(uri, headers: getHeaders());
 
-    log(response.body);
+    return response;
   }
 
-  void _createQuiz() async {
+  Future<http.Response> createQuiz() async {
     var params = {"QuizCategoryId": 2, "FilterType": 1};
 
     Uri uri = Uri.http('10.0.2.2:5000', '/api/quizgenerator/reddit');
@@ -47,6 +54,6 @@ class Loader {
     final response =
         await http.post(uri, headers: getHeaders(), body: jsonEncode(params));
 
-    log(response.body);
+    return response;
   }
 }

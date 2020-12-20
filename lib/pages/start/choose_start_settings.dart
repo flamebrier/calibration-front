@@ -1,4 +1,4 @@
-import 'package:calibration/pages/start/start_settings.dart';
+import 'package:calibration/data/models.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:calibration/styles.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +33,7 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: Alignment.bottomCenter,
-    children: [
+    return Stack(alignment: Alignment.bottomCenter, children: [
       Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25),
         child: ListView(children: <Widget>[
@@ -152,18 +151,20 @@ class _ChooseStartSettingsState extends State<ChooseStartSettings> {
           ] else
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: RaisedButton(
-                    child: Text(S.current.save),
-                    onPressed: () {
-                      if (mounted) {
-                        setState(() {
-                          _isSaved = true;
-                        });
-                      }
-                    }),
-              )],
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: RaisedButton(
+                      child: Text(S.current.save),
+                      onPressed: () {
+                        if (mounted) {
+                          setState(() {
+                            _isSaved = true;
+                          });
+                        }
+                      }),
+                )
+              ],
             ),
           if (_settings.allFilled && _isSaved)
             IconButton(

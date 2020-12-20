@@ -105,81 +105,51 @@ class S {
     );
   }
 
-  /// `Women`
-  String get catFemale {
+  /// `Pictures`
+  String get catPics {
     return Intl.message(
-      'Women',
-      name: 'catFemale',
+      'Pictures',
+      name: 'catPics',
       desc: '',
       args: [],
     );
   }
 
-  /// `Men`
-  String get catMale {
+  /// `Memes`
+  String get catMemes {
     return Intl.message(
-      'Men',
-      name: 'catMale',
+      'Memes',
+      name: 'catMemes',
       desc: '',
       args: [],
     );
   }
 
-  /// `Kids`
-  String get catKids {
+  /// `Reddit`
+  String get catReddit {
     return Intl.message(
-      'Kids',
-      name: 'catKids',
+      'Reddit',
+      name: 'catReddit',
       desc: '',
       args: [],
     );
   }
 
-  /// `Shoes`
-  String get catShoes {
+  /// `Enter existing session`
+  String get startAlready {
     return Intl.message(
-      'Shoes',
-      name: 'catShoes',
+      'Enter existing session',
+      name: 'startAlready',
       desc: '',
       args: [],
     );
   }
 
-  /// `Accessory`
-  String get catAccessory {
+  /// `If you already have session code, enter it here`
+  String get startAlreadyLong {
     return Intl.message(
-      'Accessory',
-      name: 'catAccessory',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Electronic`
-  String get catElectronic {
-    return Intl.message(
-      'Electronic',
-      name: 'catElectronic',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Toys`
-  String get catToys {
-    return Intl.message(
-      'Toys',
-      name: 'catToys',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Home`
-  String get catHome {
-    return Intl.message(
-      'Home',
-      name: 'catHome',
+      'If you already have session code, enter it here',
+      name: 'startAlreadyLong',
       desc: '',
       args: [],
     );

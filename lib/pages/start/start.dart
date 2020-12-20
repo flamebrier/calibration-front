@@ -1,10 +1,12 @@
+import 'package:calibration/data/models.dart';
 import 'package:calibration/pages/start/categories.dart';
 import 'package:calibration/pages/start/choose_start_settings.dart';
 import 'package:calibration/pages/start/game.dart';
-import 'package:calibration/pages/start/start_settings.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:calibration/data/loader.dart';
 import 'package:flutter/material.dart';
+
+import '../../styles.dart';
 
 class StartPage extends StatefulWidget {
   final StartSettings initialSettings;
@@ -16,6 +18,7 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage>
     with AutomaticKeepAliveClientMixin {
+  final TextEditingController _linkController = TextEditingController();
   StartSettings _settings = StartSettings();
 
   @override
@@ -32,6 +35,21 @@ class _StartPageState extends State<StartPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.startTitle),
+        leading: (_settings.category != null)
+            ? IconButton(
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Styles.actionColor,
+                ),
+                onPressed: () {
+                  if (mounted) {
+                    setState(() {
+                      _settings.category = null;
+                    });
+                  }
+                },
+              )
+            : Container(),
       ),
       body: _chooseViewBuilder(context),
     );
@@ -39,14 +57,77 @@ class _StartPageState extends State<StartPage>
 
   Widget _chooseViewBuilder(BuildContext context) {
     if (_settings.category == null) {
-      return CategoriesView(
-        onChoose: (category) {
-          if (mounted) {
-            setState(() {
-              _settings.category = category;
-            });
-          }
-        },
+      return Column(
+        children: [
+          Expanded(
+            child: CategoriesView(
+              onChoose: (category) {
+                if (mounted) {
+                  setState(() {
+                    _settings.category = category;
+                  });
+                }
+              },
+            ),
+          ),
+          RaisedButton.icon(
+              icon: Icon(Icons.vpn_key_outlined),
+              label: Text(S.current.startAlready),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                          appBar: AppBar(
+                            title: Text(S.current.startAlready),
+                            leading: IconButton(
+                              icon: Icon(
+                                Icons.arrow_back_rounded,
+                                color: Styles.actionColor,
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ),
+                          body: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Spacer(),
+                                  Text(S.current.startAlreadyLong),
+                                  Container(height: 25),
+                                  TextField(
+                                    controller: _linkController,
+                                    decoration: InputDecoration(
+                                        labelText: S.current.startLinkInfo,
+                                        border: OutlineInputBorder()),
+                                    onSubmitted: (text) {},
+                                  ),
+                                  Spacer(),
+                                  ValueListenableBuilder<TextEditingValue>(
+                                      valueListenable: _linkController,
+                                      builder: (context, value, child) {
+                                        if ((value.text ?? "").isEmpty) {
+                                          return Container();
+                                        }
+                                        return IconButton(
+                                          icon: Icon(
+                                              Icons.play_circle_fill_rounded),
+                                          color: Styles.actionColor,
+                                          splashRadius: 24,
+                                          onPressed: () {},
+                                          iconSize: 128,
+                                        );
+                                      })
+                                ]),
+                          ),
+                        )));
+              }),
+          Container(
+            height: 25,
+          )
+        ],
       );
     }
     return ChooseStartSettings(
