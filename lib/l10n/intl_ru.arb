@@ -29,6 +29,11 @@
     "filterNew": "Новое",
     "filterTop": "Популярное",
 
+    "addNewQuiz": "Добавить опросник",
+    "addNewCat": "Добавить категорию",
+    "addNewCatName": "Название категории",
+
+
     "profileTitle": "Профиль",
     "profileId": "Email",
     "profileNickname": "Никнейм",

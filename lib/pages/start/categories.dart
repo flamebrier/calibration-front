@@ -34,6 +34,10 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   void initState() {
     super.initState();
+    _loadCategories();
+  }
+
+  _loadCategories() {
     Loader.instance.getCategories().then((response) {
       final body = json.decode(response.body);
       for (final i in body) {
@@ -53,13 +57,68 @@ class _CategoriesViewState extends State<CategoriesView> {
     });
   }
 
+  TextEditingController _catName = TextEditingController();
+
+  Widget _addCatButton() {
+    return RaisedButton.icon(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return Scaffold(
+              appBar: AppBar(
+                  title: Text(S.current.addNewCat),
+                  leading: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_rounded,
+                      color: Styles.actionColor,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )),
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                          child: TextField(
+                        controller: _catName,
+                        decoration: InputDecoration(
+                            labelText: S.current.addNewCatName,
+                            border: OutlineInputBorder()),
+                        onSubmitted: (text) {
+                          Loader.instance.createCategory(text);
+                          _loadCategories();
+                        },
+                      ))),
+                  RaisedButton(
+                      onPressed: () {
+                        Loader.instance.createCategory(_catName.text);
+                        _loadCategories();
+                      },
+                      child: Text(S.current.save))
+                ],
+              ),
+            );
+          }));
+        },
+        icon: Icon(Icons.add),
+        label: Text(S.current.addNewCat));
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_categories.isEmpty) {
-      return Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Styles.primaryColor),
-        ),
+      return Column(
+        children: [
+          Center(child: _addCatButton()),
+          Expanded(
+              child: Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Styles.primaryColor),
+            ),
+          )),
+        ],
       );
     }
     return Padding(
@@ -68,6 +127,7 @@ class _CategoriesViewState extends State<CategoriesView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Center(child: _addCatButton()),
             Text(S.of(context).startCategorySuggestion),
             Expanded(
               child: ListView.builder(

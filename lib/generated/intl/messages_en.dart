@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addNewCat" : MessageLookupByLibrary.simpleMessage("Add new category"),
+    "addNewCatName" : MessageLookupByLibrary.simpleMessage("Category name"),
     "addNewQuiz" : MessageLookupByLibrary.simpleMessage("Add new quiz"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "catMemes" : MessageLookupByLibrary.simpleMessage("Memes"),

@@ -54,7 +54,7 @@ class _QuizesViewState extends State<QuizesView> {
               _loadQuizes();
             },
             icon: Icon(Icons.add),
-            label: Text("Add new quiz")),
+            label: Text(S.current.addNewQuiz)),
         Expanded(
             child: Center(
                 child: CircularProgressIndicator(
@@ -83,7 +83,7 @@ class _QuizesViewState extends State<QuizesView> {
                     _loadQuizes();
                   },
                   icon: Icon(Icons.add),
-                  label: Text("Add new quiz")),
+                  label: Text(S.current.addNewQuiz)),
               Container(height: 10),
               Text(S.of(context).startQuizSuggestion),
               Expanded(

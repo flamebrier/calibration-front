@@ -275,6 +275,16 @@ class S {
     );
   }
 
+  /// `Category name`
+  String get addNewCatName {
+    return Intl.message(
+      'Category name',
+      name: 'addNewCatName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Time left`
   String get launchTimeLeft {
     return Intl.message(
