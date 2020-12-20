@@ -18,7 +18,6 @@ class _HistoryViewState extends State<HistoryView>
   Widget build(BuildContext context) {
     super.build(context);
     return ListView(children: [
-      RaisedButton(onPressed: () {}),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: HistoryTile(

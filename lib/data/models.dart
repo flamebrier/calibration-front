@@ -5,6 +5,18 @@ class Profile {
   String nickName;
   String name;
   String photoUrl;
+  List<UserRole> roles;
+}
+
+class UserRole {
+  int id;
+  String userId;
+  String roleId;
+
+  @override
+  String toString() {
+    return roleId;
+  }
 }
 
 Map<String, String> catNames = {
@@ -74,5 +86,14 @@ class Session {
   Quiz quiz;
   DateTime dateOfCreation;
   int creatorId;
-  var participants;
+  List<Participant> participants;
+}
+
+class Participant {
+  int id;
+  String userId;
+  Profile user;
+  DateTime dateOfStart;
+  DateTime dateOfEnd;
+  var questionsAndAnswers;
 }

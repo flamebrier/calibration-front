@@ -78,6 +78,40 @@ class _GameViewState extends State<GameView> {
 
   CardController controller = CardController();
 
+  Widget currentImage = Container();
+
+  _createImage(String url) {
+    try {
+      currentImage = CachedNetworkImage(
+          imageUrl: url,
+          /* frameBuilder: (BuildContext context,
+                                            Widget child,
+                                            int frame,
+                                            bool wasSynchronouslyLoaded) {
+                                          if (frame == null) {
+                                            return Container();
+                                          }
+                                          if (wasSynchronouslyLoaded) {
+                                            return child;
+                                          }
+                                          return AnimatedOpacity(
+                                            child: child,
+                                            opacity: frame == null ? 0 : 1,
+                                            duration: const Duration(seconds: 1),
+                                            curve: Curves.easeOut,
+                                          );
+                                        }, */
+          placeholder: (BuildContext context, String s) {
+            return Center(
+                child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Styles.primaryColor),
+            ));
+          });
+    } catch (e) {
+      currentImage = Container();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.session == null) {
@@ -138,6 +172,7 @@ class _GameViewState extends State<GameView> {
             minWidth: 100.0,
             minHeight: 100.0,
             cardBuilder: (context, index) {
+              _createImage(_posts[index].pictureUrl);
               /* _checkImage(posts[index].pictureUrl, onError: () {
                 controller.triggerLeft();
                 return Container();
@@ -163,34 +198,7 @@ class _GameViewState extends State<GameView> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Expanded(
-                        child: SingleChildScrollView(
-                          child: CachedNetworkImage(
-                              imageUrl: _posts[index].pictureUrl,
-                              /* frameBuilder: (BuildContext context,
-                                            Widget child,
-                                            int frame,
-                                            bool wasSynchronouslyLoaded) {
-                                          if (frame == null) {
-                                            return Container();
-                                          }
-                                          if (wasSynchronouslyLoaded) {
-                                            return child;
-                                          }
-                                          return AnimatedOpacity(
-                                            child: child,
-                                            opacity: frame == null ? 0 : 1,
-                                            duration: const Duration(seconds: 1),
-                                            curve: Curves.easeOut,
-                                          );
-                                        }, */
-                              placeholder: (BuildContext context, String s) {
-                                return Center(
-                                    child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                      Styles.primaryColor),
-                                ));
-                              }),
-                        ),
+                        child: SingleChildScrollView(child: currentImage),
                       ),
 
                       /* CachedNetworkImage(

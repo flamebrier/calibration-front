@@ -23,6 +23,7 @@ class _ProfilePageState extends State<ProfilePage>
   final TextEditingController _emailController = TextEditingController();
 
   Profile _localUser;
+  String _roles = "";
 
   bool _isEditing = false;
 
@@ -40,7 +41,19 @@ class _ProfilePageState extends State<ProfilePage>
           var response = await Loader.instance.getUser();
           if ((response?.body ?? "").isNotEmpty) {
             final body = json.decode(response.body);
-            profile = profile..nickName = body["Nickname"];
+            log(body.toString());
+            List<UserRole> roles = List<UserRole>();
+            for (final e in body["UsersRoles"]) {
+              UserRole role = UserRole()
+                ..id = e["Id"]
+                ..userId = e["UserId"]
+                ..roleId = e["RoleId"];
+              roles.add(role);
+              _roles += "$role ";
+            }
+            profile = profile
+              ..nickName = body["Nickname"]
+              ..roles = roles;
           }
         } catch (e) {
           log(e.toString());
@@ -141,6 +154,11 @@ class _ProfilePageState extends State<ProfilePage>
                       }),
                 )
               ]),
+              Text(_roles,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1
+                      .copyWith(color: Styles.semiDarkColor)),
               Row(children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),

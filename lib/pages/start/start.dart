@@ -8,6 +8,7 @@ import 'package:calibration/pages/start/enter_existing.dart';
 import 'package:calibration/pages/start/game.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:calibration/data/loader.dart';
+import 'package:calibration/data/serializator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -167,39 +168,14 @@ class _StartPageState extends State<StartPage>
           child: ChooseStartSettings(
             initialSettings: _settings,
             onChoose: (settings, controller) async {
-              var response =
-                  await Loader.instance.createSession(_settings, _quiz.id);
-              final body = json.decode(response.body);
-              final jsonQuiz = body["Quiz"];
-              controller.text = body["Id"].toString();
+              _session = Serializator.instance.createSessionFromResponse(
+                  await Loader.instance.createSession(_settings, _quiz.id));
+              controller.text = _session.id.toString();
               if (mounted) {
                 setState(() {
                   _settings = settings;
                 });
               }
-              List<Post> questions = List<Post>();
-              for (final e in jsonQuiz["Questions"]) {
-                questions.add(Post()
-                  ..id = e["Id"]
-                  ..title = e["Title"]
-                  ..pictureUrl = e["PictureUrl"]);
-              }
-              _quiz = Quiz()
-                ..categoryId = jsonQuiz["QuizCategory"]["Id"]
-                ..id = jsonQuiz["Id"]
-                ..countOfQuestions = jsonQuiz["CountOfQuestions"]
-                ..dateOfCreation = DateTime.parse(body["DateOfCreation"])
-                ..settings = (QuizSettings()
-                  ..id = jsonQuiz["QuizSettings"]["Id"]
-                  ..filterTypeId = jsonQuiz["QuizSettings"]["FilterType"]
-                  ..topFilter = jsonQuiz["QuizSettings"]["TopFilter"])
-                ..questions = questions;
-              _session = Session()
-                ..id = body["Id"]
-                ..creatorId = body["CreatorId"]
-                ..dateOfCreation = DateTime.parse(body["DateOfCreation"])
-                ..settings = _settings
-                ..quiz = _quiz;
             },
             launch: (settings) async {
               Navigator.of(context).push(MaterialPageRoute(

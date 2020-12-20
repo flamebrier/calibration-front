@@ -1,5 +1,11 @@
+import 'dart:developer';
+
+import 'package:calibration/data/loader.dart';
+import 'package:calibration/data/models.dart';
 import 'package:calibration/generated/l10n.dart';
+import 'package:calibration/pages/start/game.dart';
 import 'package:flutter/material.dart';
+import 'package:calibration/data/serializator.dart';
 
 import '../../styles.dart';
 
@@ -58,7 +64,20 @@ class EnterExisting extends StatelessWidget {
                       icon: Icon(Icons.play_circle_fill_rounded),
                       color: Styles.actionColor,
                       splashRadius: 24,
-                      onPressed: () {},
+                      onPressed: () async {
+                        Session session;
+                        try {
+                          await Loader.instance.init();
+                          session = Serializator.instance
+                              .createSessionFromResponse(await Loader.instance
+                                  .joinSession(int.tryParse(value.text) ?? 0));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  GameView(session: session)));
+                        } catch (e) {
+                          log(e.toString());
+                        }
+                      },
                       iconSize: 128,
                     );
                   })

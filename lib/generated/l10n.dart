@@ -255,6 +255,26 @@ class S {
     );
   }
 
+  /// `Add new quiz`
+  String get addNewQuiz {
+    return Intl.message(
+      'Add new quiz',
+      name: 'addNewQuiz',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new category`
+  String get addNewCat {
+    return Intl.message(
+      'Add new category',
+      name: 'addNewCat',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Time left`
   String get launchTimeLeft {
     return Intl.message(

@@ -15,6 +15,12 @@ class Loader {
     });
   }
 
+  init() async {
+    userToken = await FirebaseAuth.instance?.currentUser?.getIdToken();
+  }
+
+  Profile currentProfile;
+
   String userToken;
 
   Map<String, String> get headers => {
@@ -64,14 +70,33 @@ class Loader {
     return response;
   }
 
-  Future<http.Response> createQuiz() async {
-    var params = {"QuizCategoryId": 2, "FilterType": 1};
+  Future<http.Response> createCategory(String name) async {
+    var params = {"BaseCategoryId": 0, "Name": name};
+
+    Uri uri = Uri.http('10.0.2.2:5000', '/api/quizgenerator/addcategory');
+
+    final response =
+        await http.post(uri, headers: headers, body: jsonEncode(params));
+
+    return response;
+  }
+
+  Future<http.Response> createQuiz(int catId, FilterTypes ft) async {
+    var params = {
+      "QuizCategoryId": catId,
+      "FilterType": ft.index,
+      "TopFilter": null
+    };
+    // var params = {"QuizCategoryId": 1, "FilterType": 1, "TopFilter": null};
+
+    log(params.toString());
 
     Uri uri = Uri.http('10.0.2.2:5000', '/api/quizgenerator/reddit');
 
     final response =
         await http.post(uri, headers: headers, body: jsonEncode(params));
 
+    log(response.body.toString());
     return response;
   }
 
@@ -84,6 +109,17 @@ class Loader {
     };
 
     Uri uri = Uri.http('10.0.2.2:5000', '/api/session/create/$quizId');
+
+    final response =
+        await http.post(uri, headers: headers, body: jsonEncode(params));
+
+    return response;
+  }
+
+  Future<http.Response> joinSession(int sessionId) async {
+    var params = {"Value": sessionId};
+
+    Uri uri = Uri.http('10.0.2.2:5000', '/api/session/join');
 
     final response =
         await http.post(uri, headers: headers, body: jsonEncode(params));

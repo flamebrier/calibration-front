@@ -24,6 +24,10 @@ class _QuizesViewState extends State<QuizesView> {
   @override
   void initState() {
     super.initState();
+    _loadQuizes();
+  }
+
+  _loadQuizes() async {
     Loader.instance.getQuizes(widget.category.id).then((response) {
       final body = json.decode(response.body);
       for (final e in body) {
@@ -43,11 +47,20 @@ class _QuizesViewState extends State<QuizesView> {
   @override
   Widget build(BuildContext context) {
     if (_quizes.isEmpty) {
-      return Center(
-        child: CircularProgressIndicator(
+      return Column(children: [
+        RaisedButton.icon(
+            onPressed: () {
+              Loader.instance.createQuiz(widget.category.id, FilterTypes.hot);
+              _loadQuizes();
+            },
+            icon: Icon(Icons.add),
+            label: Text("Add new quiz")),
+        Expanded(
+            child: Center(
+                child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(Styles.primaryColor),
-        ),
-      );
+        ))),
+      ]);
     }
     return Padding(
         padding: const EdgeInsets.only(left: 25.0, top: 10, right: 25),
@@ -63,6 +76,14 @@ class _QuizesViewState extends State<QuizesView> {
                         .headline6
                         .copyWith(color: Styles.actionColor)),
               ),
+              RaisedButton.icon(
+                  onPressed: () {
+                    Loader.instance
+                        .createQuiz(widget.category.id, FilterTypes.hot);
+                    _loadQuizes();
+                  },
+                  icon: Icon(Icons.add),
+                  label: Text("Add new quiz")),
               Container(height: 10),
               Text(S.of(context).startQuizSuggestion),
               Expanded(
@@ -110,7 +131,7 @@ class _QuizesViewState extends State<QuizesView> {
                             ),
                           ),
                         );
-                      }))
+                      })),
             ]));
   }
 }
