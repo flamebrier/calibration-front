@@ -1,9 +1,11 @@
 import 'package:calibration/data/models.dart';
 import 'package:calibration/pages/start/categories.dart';
 import 'package:calibration/pages/start/choose_start_settings.dart';
+import 'package:calibration/pages/start/enter_existing.dart';
 import 'package:calibration/pages/start/game.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:calibration/data/loader.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../styles.dart';
@@ -18,8 +20,8 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage>
     with AutomaticKeepAliveClientMixin {
-  final TextEditingController _linkController = TextEditingController();
   StartSettings _settings = StartSettings();
+  User _user;
 
   @override
   void initState() {
@@ -27,11 +29,21 @@ class _StartPageState extends State<StartPage>
     if (widget.initialSettings != null) {
       _settings = widget.initialSettings;
     }
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (mounted) {
+        setState(() {
+          _user = user;
+        });
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    if (_user == null) {
+      return EnterExisting(implyLeading: false);
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.startTitle),
@@ -73,57 +85,8 @@ class _StartPageState extends State<StartPage>
           RaisedButton.icon(
               icon: Icon(Icons.vpn_key_outlined),
               label: Text(S.current.startAlready),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                          appBar: AppBar(
-                            title: Text(S.current.startAlready),
-                            leading: IconButton(
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: Styles.actionColor,
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ),
-                          body: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Spacer(),
-                                  Text(S.current.startAlreadyLong),
-                                  Container(height: 25),
-                                  TextField(
-                                    controller: _linkController,
-                                    decoration: InputDecoration(
-                                        labelText: S.current.startLinkInfo,
-                                        border: OutlineInputBorder()),
-                                    onSubmitted: (text) {},
-                                  ),
-                                  Spacer(),
-                                  ValueListenableBuilder<TextEditingValue>(
-                                      valueListenable: _linkController,
-                                      builder: (context, value, child) {
-                                        if ((value.text ?? "").isEmpty) {
-                                          return Container();
-                                        }
-                                        return IconButton(
-                                          icon: Icon(
-                                              Icons.play_circle_fill_rounded),
-                                          color: Styles.actionColor,
-                                          splashRadius: 24,
-                                          onPressed: () {},
-                                          iconSize: 128,
-                                        );
-                                      })
-                                ]),
-                          ),
-                        )));
-              }),
+              onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => EnterExisting()))),
           Container(
             height: 25,
           )

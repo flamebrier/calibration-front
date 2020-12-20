@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:calibration/data/loader.dart';
 import 'package:calibration/data/models.dart';
 import 'package:calibration/pages/profile/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,12 +29,27 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance?.authStateChanges()?.listen((user) {
+    FirebaseAuth.instance?.authStateChanges()?.listen((user) async {
       if (user != null) {
-        _updateControllers(Profile()
+        Loader.instance.userToken = await user.getIdToken();
+        var profile = Profile()
           ..id = user?.email
           ..name = user?.displayName
-          ..photoUrl = user?.photoURL);
+          ..photoUrl = user?.photoURL;
+        try {
+          var response = await Loader.instance.getUser();
+          if ((response?.body ?? "").isNotEmpty) {
+            final body = json.decode(response.body);
+            profile = profile..nickName = body["Nickname"];
+          }
+        } catch (e) {
+          log(e.toString());
+        }
+        if (mounted) {
+          setState(() {
+            _updateControllers(profile);
+          });
+        }
       } else {
         _localUser = null;
       }
@@ -149,6 +166,28 @@ class _ProfilePageState extends State<ProfilePage>
               Row(children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
+                  child: Icon(
+                    Icons.person_outlined,
+                    color: Styles.semiDarkColor,
+                  ),
+                ),
+                Expanded(
+                    child: TextField(
+                  controller: _nameController,
+                  enabled: false,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1
+                      .copyWith(color: Styles.semiDarkColor),
+                  decoration: InputDecoration(
+                    labelText: S.current.profileName,
+                    border: InputBorder.none,
+                  ),
+                )),
+              ]),
+              Row(children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
                   child: Icon(Icons.sentiment_very_satisfied),
                 ),
                 Expanded(
@@ -163,22 +202,6 @@ class _ProfilePageState extends State<ProfilePage>
                       InputDecoration(labelText: S.current.profileNickname),
                 )),
               ]),
-              Row(children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Icon(Icons.person_pin_circle_outlined),
-                ),
-                Expanded(
-                    child: TextField(
-                  controller: _nameController,
-                  onChanged: (text) {
-                    if (text != _localUser.name) {
-                      _startEditing();
-                    }
-                  },
-                  decoration: InputDecoration(labelText: S.current.profileName),
-                )),
-              ]),
               Container(height: 10),
               if (_isEditing)
                 Row(
@@ -190,10 +213,11 @@ class _ProfilePageState extends State<ProfilePage>
                           },
                           child: Text(S.current.cancel)),
                       RaisedButton(
-                          onPressed: () {
-                            _updateControllers(Profile()
-                              ..name = _nameController.text
-                              ..nickName = _nickNameController.text);
+                          onPressed: () async {
+                            await Loader.instance
+                                .setUserNick(_nickNameController.text);
+                            _updateControllers(
+                                Profile()..nickName = _nickNameController.text);
                           },
                           child: Text(S.current.save))
                     ])
@@ -221,7 +245,9 @@ class _ProfilePageState extends State<ProfilePage>
       if (user.id != null) {
         _localUser.id = user.id;
       }
-      _localUser.name = user.name ?? "";
+      if (user.name != null) {
+        _localUser.name = user.name ?? "";
+      }
       _localUser.nickName = user.nickName ?? "";
       if (user.photoUrl != null) {
         _localUser.photoUrl = user.photoUrl;

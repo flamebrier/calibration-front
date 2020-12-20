@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startLinkInfo" : MessageLookupByLibrary.simpleMessage("Id для входа"),
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Максимальное количество игроков"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Максимальное время игры"),
+    "startNotAuth" : MessageLookupByLibrary.simpleMessage("Чтобы создавать новые сессии вы должны авторизоваться"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Старт"),
     "statsTitle" : MessageLookupByLibrary.simpleMessage("Статистика"),
     "title" : MessageLookupByLibrary.simpleMessage("Калибровка")

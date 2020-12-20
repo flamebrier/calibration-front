@@ -13,6 +13,7 @@
     "catReddit": "Reddit",
     "startAlready": "Enter existing session",
     "startAlreadyLong": "If you already have session code, enter it here",
+    "startNotAuth": "You need sign in to create new sessions",
 
     "startMaxTime": "Maximum game time",
     "startMaxPeople": "Maximum people playing",

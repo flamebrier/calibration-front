@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startLinkInfo" : MessageLookupByLibrary.simpleMessage("Login code"),
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Maximum people playing"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Maximum game time"),
+    "startNotAuth" : MessageLookupByLibrary.simpleMessage("You need sign in to create new sessions"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Start"),
     "statsTitle" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "title" : MessageLookupByLibrary.simpleMessage("Calibration")

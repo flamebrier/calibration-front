@@ -155,6 +155,16 @@ class S {
     );
   }
 
+  /// `You need sign in to create new sessions`
+  String get startNotAuth {
+    return Intl.message(
+      'You need sign in to create new sessions',
+      name: 'startNotAuth',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Maximum game time`
   String get startMaxTime {
     return Intl.message(

@@ -8,7 +8,7 @@ import 'package:calibration/widgets/countdown.dart';
 import 'package:flutter/material.dart';
 import 'package:calibration/generated/l10n.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 import '../../styles.dart';
@@ -26,7 +26,7 @@ class Post {
 
 class GameView extends StatefulWidget {
   final StartSettings settings;
-  final Response quiz;
+  final http.Response quiz;
 
   const GameView({Key key, @required this.settings, this.quiz})
       : super(key: key);
@@ -84,6 +84,19 @@ class _GameViewState extends State<GameView> {
       ..description = "Желтый цвет",
   ]; */
 
+  _checkImage(String url, {VoidCallback onError}) async {
+    try {
+      var res = await http.get(url);
+      if (res.statusCode ~/ 100 != 2) {
+        throw Exception("Image not found");
+      }
+    } catch (e) {
+      if (onError != null) {
+        onError();
+      }
+    }
+  }
+
   CardController controller = CardController();
 
   @override
@@ -137,97 +150,97 @@ class _GameViewState extends State<GameView> {
                 style: Theme.of(context).textTheme.headline2)
           ])),
           Expanded(
-            child: TinderSwapCard(
-              cardController: controller,
-              stackNum: 3,
-              totalNum: posts.length ?? 0,
-              maxHeight: MediaQuery.of(context).size.height,
-              maxWidth: MediaQuery.of(context).size.width * 0.95,
-              minWidth: 100.0,
-              minHeight: 200.0,
-              cardBuilder: (context, index) {
-                return Card(
-                    elevation: 3,
-                    clipBehavior: Clip.hardEdge,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: <Widget>[
-                        SingleChildScrollView(
-                            child: Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 600,
-                                // color: posts[index]?.color ?? Colors.white,
-                                child: Image.network(
-                                  posts[index].pictureUrl,
-                                  frameBuilder: (BuildContext context,
-                                      Widget child,
-                                      int frame,
-                                      bool wasSynchronouslyLoaded) {
-                                    if (frame == null) {
-                                      return Container();
-                                    }
-                                    if (wasSynchronouslyLoaded) {
-                                      return child;
-                                    }
-                                    return AnimatedOpacity(
-                                      child: child,
-                                      opacity: frame == null ? 0 : 1,
-                                      duration: const Duration(seconds: 1),
-                                      curve: Curves.easeOut,
-                                    );
-                                  },
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                                Styles.primaryColor),
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                )
-                                /* CachedNetworkImage(
+              child: TinderSwapCard(
+            cardController: controller,
+            stackNum: 3,
+            totalNum: posts.length ?? 0,
+            maxHeight: MediaQuery.of(context).size.height,
+            maxWidth: MediaQuery.of(context).size.width,
+            minWidth: 100.0,
+            minHeight: 100.0,
+            cardBuilder: (context, index) {
+              /* _checkImage(posts[index].pictureUrl, onError: () {
+                controller.triggerLeft();
+                return Container();
+              }); */
+              /* precacheImage(
+                AdvancedNetworkImage(
+                  posts[index].pictureUrl,
+                  useDiskCache: true,
+                  loadFailedCallback: () {
+                    controller.triggerLeft();
+                  },
+                  cacheRule: CacheRule(maxAge: const Duration(days: 7)),
+                ),
+                context,
+              ); */
+              return Card(
+                  elevation: 3,
+                  clipBehavior: Clip.hardEdge,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: CachedNetworkImage(
+                              imageUrl: posts[index].pictureUrl,
+                              /* frameBuilder: (BuildContext context,
+                                            Widget child,
+                                            int frame,
+                                            bool wasSynchronouslyLoaded) {
+                                          if (frame == null) {
+                                            return Container();
+                                          }
+                                          if (wasSynchronouslyLoaded) {
+                                            return child;
+                                          }
+                                          return AnimatedOpacity(
+                                            child: child,
+                                            opacity: frame == null ? 0 : 1,
+                                            duration: const Duration(seconds: 1),
+                                            curve: Curves.easeOut,
+                                          );
+                                        }, */
+                              placeholder: (BuildContext context, String s) {
+                                return Center(
+                                    child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Styles.primaryColor),
+                                ));
+                              }),
+                        ),
+                      ),
+
+                      /* CachedNetworkImage(
                                   imageUrl: posts[index].pictureUrl,
                                   placeholder: (context, url) =>
                                       CircularProgressIndicator(),
                                   errorWidget: (context, url, error) =>
                                       Icon(Icons.error),
                                 ) */
-                                )),
-                        Container(
-                          color: Styles.brightColor,
-                          padding: EdgeInsets.symmetric(vertical: 5),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 8),
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          posts[index]?.title ??
-                                              S.of(context).title,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline5,
-                                        ) /* ,
+                      Container(
+                        color: Styles.brightColor,
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        posts[index]?.title ??
+                                            S.of(context).title,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5,
+                                      ) /* ,
                                         Text(
                                           posts[index]?.description ??
                                               S.of(context).title,
@@ -235,51 +248,49 @@ class _GameViewState extends State<GameView> {
                                               .textTheme
                                               .bodyText2,
                                         ) */
-                                      ])),
-                              Container(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Expanded(
-                                      child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: CircleIconButton(
-                                            color: Styles.brightColor,
-                                            borderColor: Styles.primaryColor,
-                                            icon: Icon(
-                                                Icons.delete_outline_rounded,
-                                                color: Styles.primaryColor,
-                                                size: 32),
-                                            onTap: () {},
-                                          ))),
-                                  Expanded(
-                                      child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: CircleIconButton(
-                                            color: Styles.brightColor,
-                                            borderColor: Styles.actionColor,
-                                            icon: Icon(
-                                              Icons.favorite_outline_rounded,
-                                              color: Styles.actionColor,
-                                              size: 32,
-                                            ),
-                                            onTap: () {},
-                                          ))),
-                                ],
-                              ),
-                            ],
-                          ),
+                                    ])),
+                            Container(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Expanded(
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        child: CircleIconButton(
+                                          color: Styles.brightColor,
+                                          borderColor: Styles.primaryColor,
+                                          icon: Icon(
+                                              Icons.delete_outline_rounded,
+                                              color: Styles.primaryColor,
+                                              size: 32),
+                                          onTap: () {},
+                                        ))),
+                                Expanded(
+                                    child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        child: CircleIconButton(
+                                          color: Styles.brightColor,
+                                          borderColor: Styles.actionColor,
+                                          icon: Icon(
+                                            Icons.favorite_outline_rounded,
+                                            color: Styles.actionColor,
+                                            size: 32,
+                                          ),
+                                          onTap: () {},
+                                        ))),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ));
-              },
-            ),
-          ),
+                      ),
+                    ],
+                  ));
+            },
+          )),
           Padding(
               padding: EdgeInsets.all(8.0),
               child: IconButton(
