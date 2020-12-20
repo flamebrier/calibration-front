@@ -33,3 +33,25 @@ class StartSettings {
       (maxPeople != null) &&
       (goodsCounter != null));
 }
+
+Map<FilterTypes, String> filterNames = {
+  FilterTypes.hot: S.current.filterHot,
+  FilterTypes.newest: S.current.filterNew,
+  FilterTypes.top: S.current.filterTop
+};
+
+enum FilterTypes { hot, newest, top }
+
+class QuizSettings {
+  int id;
+  bool topFilter;
+  int filterTypeId;
+}
+
+class Quiz {
+  int id;
+  QuizSettings settings;
+  int categoryId;
+  DateTime dateOfCreation;
+  int countOfQuestions;
+}

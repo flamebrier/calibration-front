@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "catMemes" : MessageLookupByLibrary.simpleMessage("Мемы"),
     "catPics" : MessageLookupByLibrary.simpleMessage("Картинки"),
     "catReddit" : MessageLookupByLibrary.simpleMessage("Реддит"),
+    "filter" : MessageLookupByLibrary.simpleMessage("Фильтр"),
+    "filterHot" : MessageLookupByLibrary.simpleMessage("Горячее"),
+    "filterNew" : MessageLookupByLibrary.simpleMessage("Новое"),
+    "filterTop" : MessageLookupByLibrary.simpleMessage("Популярное"),
     "historyTitle" : MessageLookupByLibrary.simpleMessage("История"),
     "launchChooseLeft" : MessageLookupByLibrary.simpleMessage("Ещё выбрать"),
     "launchTimeLeft" : MessageLookupByLibrary.simpleMessage("Осталось"),
@@ -59,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Максимальное количество игроков"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Максимальное время игры"),
     "startNotAuth" : MessageLookupByLibrary.simpleMessage("Чтобы создавать новые сессии вы должны авторизоваться"),
+    "startQuizSuggestion" : MessageLookupByLibrary.simpleMessage("Выберите опросник"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Старт"),
     "statsTitle" : MessageLookupByLibrary.simpleMessage("Статистика"),
     "title" : MessageLookupByLibrary.simpleMessage("Калибровка")

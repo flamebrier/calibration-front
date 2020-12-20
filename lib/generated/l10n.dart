@@ -105,6 +105,16 @@ class S {
     );
   }
 
+  /// `Choose quiz`
+  String get startQuizSuggestion {
+    return Intl.message(
+      'Choose quiz',
+      name: 'startQuizSuggestion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Pictures`
   String get catPics {
     return Intl.message(
@@ -200,6 +210,46 @@ class S {
     return Intl.message(
       'Login code',
       name: 'startLinkInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hot`
+  String get filterHot {
+    return Intl.message(
+      'Hot',
+      name: 'filterHot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Newest`
+  String get filterNew {
+    return Intl.message(
+      'Newest',
+      name: 'filterNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top`
+  String get filterTop {
+    return Intl.message(
+      'Top',
+      name: 'filterTop',
       desc: '',
       args: [],
     );

@@ -25,6 +25,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "catMemes" : MessageLookupByLibrary.simpleMessage("Memes"),
     "catPics" : MessageLookupByLibrary.simpleMessage("Pictures"),
     "catReddit" : MessageLookupByLibrary.simpleMessage("Reddit"),
+    "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
+    "filterHot" : MessageLookupByLibrary.simpleMessage("Hot"),
+    "filterNew" : MessageLookupByLibrary.simpleMessage("Newest"),
+    "filterTop" : MessageLookupByLibrary.simpleMessage("Top"),
     "historyTitle" : MessageLookupByLibrary.simpleMessage("History"),
     "launchChooseLeft" : MessageLookupByLibrary.simpleMessage("Left to choose"),
     "launchTimeLeft" : MessageLookupByLibrary.simpleMessage("Time left"),
@@ -59,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "startMaxPeople" : MessageLookupByLibrary.simpleMessage("Maximum people playing"),
     "startMaxTime" : MessageLookupByLibrary.simpleMessage("Maximum game time"),
     "startNotAuth" : MessageLookupByLibrary.simpleMessage("You need sign in to create new sessions"),
+    "startQuizSuggestion" : MessageLookupByLibrary.simpleMessage("Choose quiz"),
     "startTitle" : MessageLookupByLibrary.simpleMessage("Start"),
     "statsTitle" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "title" : MessageLookupByLibrary.simpleMessage("Calibration")

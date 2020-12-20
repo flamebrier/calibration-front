@@ -8,6 +8,7 @@
     
     "startTitle": "Старт",
     "startCategorySuggestion": "Выберите категорию",
+    "startQuizSuggestion": "Выберите опросник",
     "catPics": "Картинки",
     "catMemes": "Мемы",
     "catReddit": "Реддит",
@@ -22,7 +23,11 @@
 
     "launchTimeLeft": "Осталось",
     "launchChooseLeft": "Ещё выбрать",
-    
+
+    "filter": "Фильтр",
+    "filterHot": "Горячее",
+    "filterNew": "Новое",
+    "filterTop": "Популярное",
 
     "profileTitle": "Профиль",
     "profileId": "Email",

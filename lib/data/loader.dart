@@ -59,7 +59,7 @@ class Loader {
   Future<http.Response> getQuizes(int catId) async {
     Uri uri = Uri.http('10.0.2.2:5000', '/api/quiz/bycategory/$catId');
 
-    final response = await http.get(uri, headers: headers);
+    final response = await http.get(uri);
 
     return response;
   }

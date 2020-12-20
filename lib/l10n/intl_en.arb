@@ -8,6 +8,7 @@
 
     "startTitle": "Start",
     "startCategorySuggestion": "Choose category",
+    "startQuizSuggestion": "Choose quiz",
     "catPics": "Pictures",
     "catMemes": "Memes",
     "catReddit": "Reddit",
@@ -19,6 +20,11 @@
     "startMaxPeople": "Maximum people playing",
     "startGoodsCounter": "How much goods you'll choose?",
     "startLinkInfo": "Login code",
+
+    "filter": "Filter",
+    "filterHot": "Hot",
+    "filterNew": "Newest",
+    "filterTop": "Top",
 
     "launchTimeLeft": "Time left",
     "launchChooseLeft": "Left to choose",
