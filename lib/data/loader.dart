@@ -35,6 +35,14 @@ class Loader {
     return response;
   }
 
+  Future<http.Response> getCategoryStats() async {
+    Uri uri = Uri.http('10.0.2.2:5000', '/api/users/statistics');
+
+    final response = await http.get(uri);
+
+    return response;
+  }
+
   Future<http.Response> setUserNick(String newNick) async {
     Uri uri = Uri.http('10.0.2.2:5000', '/api/users/changenick');
 

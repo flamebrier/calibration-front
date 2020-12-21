@@ -33,6 +33,8 @@
     "addNewCat": "Добавить категорию",
     "addNewCatName": "Название категории",
 
+    "catStats": "Статистика по категориям",
+    "matchesStats": "Статистика по всем совпадениям",
 
     "profileTitle": "Профиль",
     "profileId": "Email",

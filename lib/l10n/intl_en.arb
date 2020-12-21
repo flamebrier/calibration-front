@@ -30,6 +30,9 @@
     "addNewCat": "Add new category",
     "addNewCatName": "Category name",
 
+    "catStats": "Category statistics",
+    "matchesStats": "All matches statistics",
+
     "launchTimeLeft": "Time left",
     "launchChooseLeft": "Left to choose",
 

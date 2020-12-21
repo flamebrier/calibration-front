@@ -285,6 +285,26 @@ class S {
     );
   }
 
+  /// `Category statistics`
+  String get catStats {
+    return Intl.message(
+      'Category statistics',
+      name: 'catStats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All matches statistics`
+  String get matchesStats {
+    return Intl.message(
+      'All matches statistics',
+      name: 'matchesStats',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Time left`
   String get launchTimeLeft {
     return Intl.message(
